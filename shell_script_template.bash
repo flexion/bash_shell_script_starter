@@ -15,8 +15,8 @@
 ## 8. automagic help / usage generation
 ## @author Wes Dean
 
-
 set -euo pipefail
+
 
 ## @var SCRIPT_PATH
 ## @brief path to where the script lives
@@ -24,12 +24,12 @@ declare SCRIPT_PATH
 # shellcheck disable=SC2034
 SCRIPT_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
 
+
 ## @var DEFAULT_WORD
 ## @brief default value for the 'word' CLI parameter
-declare -i DEFAULT_WORD
+declare DEFAULT_WORD
 # shellcheck disable=SC2034
 DEFAULT_WORD="hello"
-
 
 
 ## @fn die
@@ -59,44 +59,127 @@ die() {
   exit 1
 }
 
-trap die ERR
 
-
+## @fn display_usage
+## @brief display some auto-generated usage information
+## @details
+## This will take two passes over the script -- one to generate
+## an overview based on everything between the @file tag and the
+## first blank line and another to scan through getopts options
+## to extract some hints about how to use the tool.
+## @retval 0 if the extraction was successful
+## @retval 1 if there was a problem running the extraction
 ## @par Example
 ## @code
-## # set values from their defaults
-## word="${DEFAULT_WORD}"
-##
-## # process long options
 ## for arg in "$@" ; do
 ##   shift
 ##   case "$arg" in
-##     '--word') set -- "$@" "-w" ;;
-##     '--help') set -- "$@" "-h" ;;
+##     '--word') set -- "$@" "-w" ;;   ##- see -w
+##     '--help') set -- "$@" "-h" ;;   ##- see -h
 ##     *)        set -- "$@" "$arg" ;;
 ##   esac
 ## done
 ##
 ## # process short options
 ## OPTIND=1
-## while getopts "w:h" opt ; do
-##   case "$opt" in
-##     'w') word="$OPTARG" ;;
-##     'h') display_usage ; exit 0 ;;
-##     *) echo "Invalid option" ; display_usage ; exit 1 ;;
+###
+##
+## while getopts "w:h" option ; do
+##   case "$option" in
+##     w ) word="$OPTARG" ;; ##- set the word value 
+##     h ) display_usage ; exit 0 ;;
+##     * ) printf "Invalid option '%s'" "$option" 2>&1 ; display_usage 1>&2 ; exit 1 ;;
 ##   esac
 ## done
-##
-## shift "$((OPTIND - 1))
-##
-## # Process positional arguments
-## for file in "$@" ; do
-##   printf "%s" "$file"
-## done
 ## @endcode
+display_usage() {
+  local overview
+  overview="$(sed -Ene '
+  /^[[:space:]]*##[[:space:]]*@file/,${/^[[:space:]]*$/q}
+  s/[[:space:]]*@author/author:/
+  s/^[[:space:]]*##([[:space:]]*@[^[[:space:]]*[[:space:]]*)*//p' < "$0")"
+
+  local usage
+  usage="$(
+  (
+    sed -Ene "s/^[[:space:]]*(['\"])([[:alnum:]]*)\1[[:space:]]*\).*##-[[:space:]]*(.*)/\-\2\t\t: \3/p" < "$0"
+    sed -Ene "s/^[[:space:]]*(['\"])([-[:alnum:]]*)*\1[[:space:]]*\)[[:space:]]*set[[:space:]]*--[[:space:]]*(['\"])[@$]*\3[[:space:]]*(['\"])(-[[:alnum:]])\4.*##-[[:space:]]*(.*)/\2\t\t: \6/p" < "$0"
+  ) | sort --ignore-case)"
+
+  if [ -n "$overview" ] ; then
+    printf "Overview\n%s\n" "$overview"
+  fi
+
+  if [ -n "$usage" ] ; then
+    printf "\nUsage:\n%s\n" "$usage"
+  fi
+}
 
 
+## @fn main()
+## @brief This is the main program loop.
+## @details
+## This is where the logic for the program lives; it's
+## called when the script is run as a script (i.e., not
+## when it's sourced or included).
+main() {
+
+  trap die ERR
 
 
-[[ "$0" == "${BASH_SOURCE[0]}" ]] && main "$@"
+  ###
+  ### set values from their defaults here
+  ###
 
+
+  word="${DEFAULT_WORD}"
+
+
+  ###
+  ### process long options here
+  ###
+
+
+  for arg in "$@" ; do
+    shift
+    case "$arg" in
+      '--word') set -- "$@" "-w" ;;   ##- see -w
+      '--help') set -- "$@" "-h" ;;   ##- see -h
+      *)        set -- "$@" "$arg" ;;
+    esac
+  done
+
+
+  ###
+  ### process short options here
+  ###
+
+
+  OPTIND=1
+  while getopts "w:h" opt ; do
+    case "$opt" in
+      'w' ) word="$OPTARG" ;;         ##- set the word to be processed
+      'h' ) display_usage ; exit 0 ;; ##- view the help documentation
+      *) printf "Invalid option '%s'" "$opt" 1>&2 ; display_usage 1>&2 ; exit 1 ;;
+    esac
+  done
+
+  shift "$((OPTIND - 1))"
+
+  # Process positional arguments
+  for file in "$@" ; do
+    printf "%s" "$file"
+  done
+
+
+  ###
+  ### program logic goes here
+  ###
+
+  echo "$word"
+
+}
+
+
+# if we're not being sourced and there's a function named `main`, run it
+[[ "$0" == "${BASH_SOURCE[0]}" ]] && [ "$(type -t "main")" = "function" ] && main "$@"
