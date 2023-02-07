@@ -31,7 +31,6 @@ LIBRARY_PATH="${SCRIPT_PATH}/lib/"
 ## @var DEFAULT_WORD
 ## @brief default value for the 'word' CLI parameter
 declare DEFAULT_WORD
-# shellcheck disable=SC2034
 DEFAULT_WORD="bird"
 
 
