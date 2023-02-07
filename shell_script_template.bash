@@ -29,7 +29,7 @@ SCRIPT_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
 ## @brief default value for the 'word' CLI parameter
 declare DEFAULT_WORD
 # shellcheck disable=SC2034
-DEFAULT_WORD="hello"
+DEFAULT_WORD="bird"
 
 
 ## @fn die
@@ -166,7 +166,12 @@ main() {
 
   shift "$((OPTIND - 1))"
 
-  # Process positional arguments
+
+  ###
+  ### Process positional arguments
+  ###
+
+
   for file in "$@" ; do
     printf "%s" "$file"
   done
@@ -176,7 +181,7 @@ main() {
   ### program logic goes here
   ###
 
-  echo "$word"
+  printf "%s %s %s the %s is the word\n" "$word" "$word" "$word" "$word"
 
 }
 
