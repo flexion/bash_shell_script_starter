@@ -1,4 +1,4 @@
-# bash\_shell\_script\_starter
+# Bash shell script starter
 
 This is a starter / template for writing Bash scripts.  It includes a
 few things:
