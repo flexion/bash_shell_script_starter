@@ -118,6 +118,24 @@ display_usage() {
 }
 
 
+###
+### If there is a library directory (lib/) relative to the
+### script's location by default), then attempt to source
+### the *.bash files located there.
+###
+
+
+if [ -n "${LIBRARY_PATH}" ] \
+&& [ -d "${LIBRARY_PATH}" ] ; then
+  for library in "${LIBRARY_PATH}"*.bash ; do
+    if [ -e "${library}" ] ; then
+      # shellcheck disable=SC1090
+      . "${library}"
+    fi
+  done
+fi
+
+
 ## @fn main()
 ## @brief This is the main program loop.
 ## @details
@@ -128,25 +146,7 @@ main() {
 
   trap die ERR
 
-
-  ###
-  ### If there is a library directory (lib/) relative to the
-  ### script's location by default), then attempt to source
-  ### the *.bash files located there.
-  ###
-
-
-  if [ -n "${LIBRARY_PATH}" ] \
-  && [ -d "${LIBRARY_PATH}" ] ; then
-    for library in "${LIBRARY_PATH}"*.bash ; do
-      if [ -e "${library}" ] ; then
-        # shellcheck disable=SC1090
-        . "${library}"
-      fi
-    done
-  fi
-
-
+ 
   ###
   ### set values from their defaults here
   ###
@@ -188,7 +188,7 @@ main() {
 
 
   ###
-  ### Process positional arguments
+  ### process positional arguments
   ###
 
 
@@ -200,6 +200,7 @@ main() {
   ###
   ### program logic goes here
   ###
+
 
   printf "%s %s %s the %s is the word\n" "$word" "$word" "$word" "$word"
 
