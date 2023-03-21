@@ -194,5 +194,3 @@ Check: CKV2_GHA_1: "Ensure top-level permissions are not set to write-all"
 +---------------+---------------------+---------------+-------+-------+--------+--------------+
 
 [GitHub Comment Reporter] Posted summary as comment on flexion/bash_shell_script_starter #PR4
-[Updated Sources Reporter] copied 5 fixed source files in folder /github/workspace/megalinter-reports/updated_sources.
-Download it from artifacts then copy-paste it in your local repo to apply linters updates
