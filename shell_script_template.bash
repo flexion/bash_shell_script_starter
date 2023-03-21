@@ -21,7 +21,7 @@ set -euo pipefail
 ## @brief path to where the script lives
 declare SCRIPT_PATH
 # shellcheck disable=SC2034
-SCRIPT_PATH="${SCRIPT_PATH:-$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)}"
+SCRIPT_PATH="${SCRIPT_PATH:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)}"
 
 ## @var LIBRARY_PATH
 ## @brief location where libraries to be included reside
@@ -32,7 +32,6 @@ LIBRARY_PATH="${LIBRARY_PATH:-${SCRIPT_PATH}/lib/}"
 ## @brief default value for the 'word' CLI parameter
 declare DEFAULT_WORD
 DEFAULT_WORD="${DEFAULT_WORD:-bird}"
-
 
 ## @fn die
 ## @brief receive a trapped error and display helpful debugging details
@@ -53,14 +52,13 @@ die() {
   local FRAMES=${#BASH_LINENO[@]}
 
   # FRAMES-2 skips main, the last one in arrays
-  for ((i=FRAMES - 2; i >= 0; i--)); do
+  for ((i = FRAMES - 2; i >= 0; i--)); do
     printf "  File \"%s\", line %s, in %s\n" "${BASH_SOURCE[i + 1]}" "${BASH_LINENO[i]}" "${FUNCNAME[i + 1]}"
     # Grab the source code of the line
     sed -n "${BASH_LINENO[i]}{s/^/    /;p}" "${BASH_SOURCE[i + 1]}"
   done
   exit 1
 }
-
 
 ## @fn display_usage
 ## @brief display some auto-generated usage information
@@ -88,7 +86,7 @@ die() {
 ##
 ## while getopts "w:h" option ; do
 ##   case "$option" in
-##     w ) word="$OPTARG" ;; ##- set the word value 
+##     w ) word="$OPTARG" ;; ##- set the word value
 ##     h ) display_usage ; exit 0 ;;
 ##     * ) printf "Invalid option '%s'" "$option" 2>&1 ; display_usage 1>&2 ; exit 1 ;;
 ##   esac
@@ -98,25 +96,27 @@ display_usage() {
   local overview
   overview="$(sed -Ene '
   /^[[:space:]]*##[[:space:]]*@file/,${/^[[:space:]]*$/q}
-  s/[[:space:]]*@author/author:/
+  s/[[:space:]]*@(author|copyright|version|)/\1:/
+  s/[[:space:]]*@(note|remarks?|since|test|todo||version|warning)/\1:\n/
+  s/[[:space:]]*@(pre|post)/\1 condition:\n/
   s/^[[:space:]]*##([[:space:]]*@[^[[:space:]]*[[:space:]]*)*//p' < "$0")"
 
   local usage
   usage="$(
-  (
-    sed -Ene "s/^[[:space:]]*(['\"])([[:alnum:]]*)\1[[:space:]]*\).*##-[[:space:]]*(.*)/\-\2\t\t: \3/p" < "$0"
-    sed -Ene "s/^[[:space:]]*(['\"])([-[:alnum:]]*)*\1[[:space:]]*\)[[:space:]]*set[[:space:]]*--[[:space:]]*(['\"])[@$]*\3[[:space:]]*(['\"])(-[[:alnum:]])\4.*##-[[:space:]]*(.*)/\2\t\t: \6/p" < "$0"
-  ) | sort --ignore-case)"
+    ( 
+      sed -Ene "s/^[[:space:]]*(['\"])([[:alnum:]]*)\1[[:space:]]*\).*##-[[:space:]]*(.*)/\-\2\t\t: \3/p" < "$0"
+      sed -Ene "s/^[[:space:]]*(['\"])([-[:alnum:]]*)*\1[[:space:]]*\)[[:space:]]*set[[:space:]]*--[[:space:]]*(['\"])[@$]*\3[[:space:]]*(['\"])(-[[:alnum:]])\4.*##-[[:space:]]*(.*)/\2\t\t: \6/p" < "$0"
+    ) | sort --ignore-case
+  )"
 
-  if [ -n "$overview" ] ; then
+  if [ -n "$overview" ]; then
     printf "Overview\n%s\n" "$overview"
   fi
 
-  if [ -n "$usage" ] ; then
+  if [ -n "$usage" ]; then
     printf "\nUsage:\n%s\n" "$usage"
   fi
 }
-
 
 ###
 ### If there is a library directory (lib/) relative to the
@@ -124,17 +124,15 @@ display_usage() {
 ### the *.bash files located there.
 ###
 
-
 if [ -n "${LIBRARY_PATH}" ] \
-&& [ -d "${LIBRARY_PATH}" ] ; then
-  for library in "${LIBRARY_PATH}"*.bash ; do
-    if [ -e "${library}" ] ; then
+                            && [ -d "${LIBRARY_PATH}" ]; then
+  for library in "${LIBRARY_PATH}"*.bash; do
+    if [ -e "${library}" ]; then
       # shellcheck disable=SC1090
       . "${library}"
     fi
   done
 fi
-
 
 ## @fn main()
 ## @brief This is the main program loop.
@@ -146,66 +144,62 @@ main() {
 
   trap die ERR
 
- 
   ###
   ### set values from their defaults here
   ###
 
-
   word="${DEFAULT_WORD}"
-
 
   ###
   ### process long options here
   ###
 
-
-  for arg in "$@" ; do
+  for arg in "$@"; do
     shift
     case "$arg" in
-      '--word') set -- "$@" "-w" ;;   ##- see -w
-      '--help') set -- "$@" "-h" ;;   ##- see -h
-      *)        set -- "$@" "$arg" ;;
+      '--word') set -- "$@" "-w" ;; ##- see -w
+      '--help') set -- "$@" "-h" ;; ##- see -h
+      *) set -- "$@" "$arg" ;;
     esac
   done
-
 
   ###
   ### process short options here
   ###
 
-
   OPTIND=1
-  while getopts "w:h" opt ; do
+  while getopts "w:h" opt; do
     case "$opt" in
-      'w' ) word="$OPTARG" ;;         ##- set the word to be processed
-      'h' ) display_usage ; exit 0 ;; ##- view the help documentation
-      *) printf "Invalid option '%s'" "$opt" 1>&2 ; display_usage 1>&2 ; exit 1 ;;
+      'w') word="$OPTARG" ;; ##- set the word to be processed
+      'h')
+        display_usage
+        exit 0
+        ;; ##- view the help documentation
+      *)
+        printf "Invalid option '%s'" "$opt" 1>&2
+        display_usage 1>&2
+        exit 1
+        ;;
     esac
   done
 
   shift "$((OPTIND - 1))"
 
-
   ###
   ### process positional arguments
   ###
 
-
-  for file in "$@" ; do
+  for file in "$@"; do
     printf "received argument: '%s'\n" "$file"
   done
-
 
   ###
   ### program logic goes here
   ###
 
-
   printf "%s %s %s the %s is the word\n" "$word" "$word" "$word" "$word"
 
 }
-
 
 # if we're not being sourced and there's a function named `main`, run it
 [[ "$0" == "${BASH_SOURCE[0]}" ]] && [ "$(type -t "main")" = "function" ] && main "$@"
