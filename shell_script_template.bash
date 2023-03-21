@@ -98,7 +98,9 @@ display_usage() {
   local overview
   overview="$(sed -Ene '
   /^[[:space:]]*##[[:space:]]*@file/,${/^[[:space:]]*$/q}
-  s/[[:space:]]*@author/author:/
+  s/[[:space:]]*@(author|copyright|version|)/\1:/
+  s/[[:space:]]*@(note|remarks?|since|test|todo||version|warning)/\1:\n/
+  s/[[:space:]]*@(pre|post)/\1 condition:\n/
   s/^[[:space:]]*##([[:space:]]*@[^[[:space:]]*[[:space:]]*)*//p' < "$0")"
 
   local usage
