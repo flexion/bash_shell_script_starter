@@ -1,0 +1,19 @@
+Results of checkov linter (version 2.3.70)
+See documentation on https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/repository_checkov/
+-----------------------------------------------
+
+❌ [ERROR] for workspace /github/workspace
+Linter raw log:
+github_actions scan results:
+
+Passed checks: 43, Failed checks: 1, Skipped checks: 0
+
+Check: CKV2_GHA_1: "Ensure top-level permissions are not set to write-all"
+	FAILED for resource: on(MegaLinter)
+	File: /.github/workflows/megalinter.yml:26-27
+
+		26 |     permissions:
+		27 |       pull-requests: write
+
+
+

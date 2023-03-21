@@ -1,0 +1,48 @@
+MegaLinter can help you to define the same linter configuration locally
+
+INSTRUCTIONS
+
+- Copy the content of IDE-config folder at the root of your repository
+- if you are using Visual Studio Code, just reopen your project after the copy, and you will be prompted to install recommended extensions
+- If not, you can install extensions manually using the following links.
+
+IDE EXTENSIONS APPLICABLE TO YOUR PROJECT
+
+shellcheck (BASH)
+  - atom:
+    - linter-shellcheck: https://github.com/AtomLinter/linter-shellcheck
+  - emacs:
+    - flycheck: https://github.com/flycheck/flycheck
+    - flymake-shellcheck: https://github.com/federicotdn/flymake-shellcheck
+  - sublime:
+    - SublimeLinter-shellcheck: https://github.com/SublimeLinter/SublimeLinter-shellcheck
+  - vim:
+    - ale: https://github.com/w0rp/ale
+    - neomake: https://github.com/neomake/neomake
+    - syntastic: https://github.com/scrooloose/syntastic
+  - vscode:
+    - vscode-shellcheck: https://marketplace.visualstudio.com/items?itemName=timonwong.shellcheck
+
+shfmt (BASH)
+  - atom:
+    - format-shell: https://atom.io/packages/format-shell
+  - emacs:
+    - emacs-shfmt: https://github.com/purcell/emacs-shfmt/
+  - idea:
+    - shell-scripts: https://www.jetbrains.com/help/idea/shell-scripts.html
+  - micro:
+    - micro: https://micro-editor.github.io/
+  - sublime:
+    - Sublime-Pretty-Shell: https://github.com/aerobounce/Sublime-Pretty-Shell
+  - vim:
+    - vim-shfmt: https://github.com/z0mbix/vim-shfmt
+  - vscode:
+    - shell-format: https://marketplace.visualstudio.com/items?itemName=foxundermoon.shell-format
+
+checkov (REPOSITORY)
+  - vscode:
+    - Checkov: https://marketplace.visualstudio.com/items?itemName=Bridgecrew.checkov
+
+trivy (REPOSITORY)
+  - vscode:
+    - VSCode Trivy: https://marketplace.visualstudio.com/items?itemName=AquaSecurityOfficial.trivy-vulnerability-scanner

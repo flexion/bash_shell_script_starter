@@ -1,0 +1,122 @@
+----------------------------------------------------------------------------------------------------
+------------------------------------ MegaLinter, by OX Security ------------------------------------
+----------------------------------------------------------------------------------------------------
+ - Image Creation Date: 2023-03-07T19:55:49Z
+ - Image Revision: 7411316caa2897b3839af1834e5fd8ebd5b7b81e
+ - Image Version: 7411316caa2897b3839af1834e5fd8ebd5b7b81e
+----------------------------------------------------------------------------------------------------
+The MegaLinter documentation can be found at:
+ - https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e
+----------------------------------------------------------------------------------------------------
+::group::MegaLinter initialization (expand for details)
+GITHUB_REPOSITORY: flexion/bash_shell_script_starter
+GITHUB_REF: refs/pull/4/merge
+GITHUB_RUN_ID: 4483227718
+
+
+[Activation] EDITORCONFIG_EDITORCONFIG_CHECKER has been set inactive, as none of these files has been found: ['.editorconfig']
+[Activation] JAVASCRIPT_ES has been set inactive, as none of these files has been found: ['.eslintrc.json', '.eslintrc.yml', '.eslintrc.yaml', '.eslintrc.js', '.eslintrc.cjs', 'package.json:eslintConfig']
+[Activation] JSON_NPM_PACKAGE_JSON_LINT has been set inactive, as none of these files has been found: ['package.json']
+[Activation] JSX_ESLINT has been set inactive, as none of these files has been found: ['.eslintrc.json', '.eslintrc.yml', '.eslintrc.yaml', '.eslintrc.js', '.eslintrc.cjs', 'package.json:eslintConfig']
+[Activation] REPOSITORY_GOODCHECK has been set inactive, as none of these files has been found: ['goodcheck.yml']
+[SemgrepLinter] Deactivated because no ruleset has been defined
+[Activation] SQL_SQLFLUFF has been set inactive, as none of these files has been found: ['.sqlfluff']
+[Activation] SWIFT_SWIFTLINT has been set inactive, as none of these files has been found: ['.swiftlint.yml']
+[Activation] TSX_ESLINT has been set inactive, as none of these files has been found: ['.eslintrc.json', '.eslintrc.yml', '.eslintrc.yaml', '.eslintrc.js', '.eslintrc.cjs', 'package.json:eslintConfig']
+[Activation] TYPESCRIPT_ES has been set inactive, as none of these files has been found: ['.eslintrc.json', '.eslintrc.yml', '.eslintrc.yaml', '.eslintrc.js', '.eslintrc.cjs', 'package.json:eslintConfig']
+MARKDOWN_REMARK_LINT has been temporary disabled in MegaLinter, please use a previous MegaLinter version or wait for the next one !
+Skipped linters: ANSIBLE_ANSIBLE_LINT, BASH_EXEC, COPYPASTE_JSCPD, EDITORCONFIG_EDITORCONFIG_CHECKER, JAVASCRIPT_ES, JAVASCRIPT_STANDARD, JSON_NPM_PACKAGE_JSON_LINT, JSX_ESLINT, KUBERNETES_KUBECONFORM, KUBERNETES_KUBEVAL, MARKDOWN_REMARK_LINT, REPOSITORY_DEVSKIM, REPOSITORY_GOODCHECK, REPOSITORY_SEMGREP, SALESFORCE_SFDX_SCANNER_APEX, SALESFORCE_SFDX_SCANNER_AURA, SALESFORCE_SFDX_SCANNER_LWC, SPELL_CSPELL, SPELL_MISSPELL, SPELL_PROSELINT, SQL_SQLFLUFF, SWIFT_SWIFTLINT, TSX_ESLINT, TYPESCRIPT_ES, TYPESCRIPT_PRETTIER, TYPESCRIPT_STANDARD
+To receive reports as email, please set variable EMAIL_REPORTER_EMAIL
+::endgroup::
+::group::MegaLinter now collects the files to analyse (expand for details)
+Listing updated files in [/github/workspace] using git diff.
+Modified files:
+shell_script_template.bash
+- File extensions: , .R, .RMD, .Rmd, .bash, .bicep, .c, .c++, .cc, .cdxml, .clj, .cljc, .cljs, .coffee, .cpp, .cs, .css, .cu, .cuh, .cxx, .dart, .dash, .edn, .env, .feature, .go, .gradle, .graphql, .groovy, .gvy, .h, .h++, .hcl, .hh, .hpp, .htm, .html, .hxx, .java, .js, .json, .json5, .jsonc, .ksh, .kt, .kts, .lua, .md, .nf, .p6, .php, .pl, .pl6, .pm, .pm6, .pp, .proto, .ps1, .ps1xml, .psd1, .psm1, .psrc, .pssc, .py, .r, .raku, .rakumod, .rakutest, .rb, .rs, .rst, .saas, .scala, .scss, .sh, .smk, .sql, .t, .tex, .tf, .vb, .xml, .yaml, .yml
+- File names (regex): Dockerfile, Jenkinsfile, Makefile, Snakefile
+- Excluding regex: (.venv/|/test/|\.test\.|_test\.|/docs/|/index.html|.github/.*\.html)
+- Excluding .gitignored files [0]: 
+Kept [1] files on [1] found files
+
++----MATCHING LINTERS-----+----------------------+----------------+------------+
+| Descriptor | Linter     | Criteria             | Matching files | Format/Fix |
++------------+------------+----------------------+----------------+------------+
+| BASH       | shellcheck | .sh|.bash|.dash|.ksh | 1              | no         |
+| BASH       | shfmt      | .sh|.bash|.dash|.ksh | 1              | yes        |
+| REPOSITORY | checkov    |                      | project        | no         |
+| REPOSITORY | dustilock  |                      | project        | no         |
+| REPOSITORY | git_diff   |                      | project        | no         |
+| REPOSITORY | gitleaks   |                      | project        | no         |
+| REPOSITORY | secretlint |                      | project        | no         |
+| REPOSITORY | syft       |                      | project        | no         |
+| REPOSITORY | trivy      |                      | project        | no         |
++------------+------------+----------------------+----------------+------------+
+::endgroup::
+::group::[32m✅ Linted [BASH] files with [shfmt] successfully - (0.02s)[0m (expand for details)
+- Using [shfmt v3.6.0] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/bash_shfmt
+- MegaLinter key: [BASH_SHFMT]
+- Rules config: identified by [shfmt]
+- Number of files analyzed: [1]
+::endgroup::
+::group::[32m✅ Linted [REPOSITORY] files with [gitleaks] successfully - (0.07s)[0m (expand for details)
+- Using [gitleaks v8.16.0] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/repository_gitleaks
+- MegaLinter key: [REPOSITORY_GITLEAKS]
+- Rules config: [.gitleaks.toml]
+::endgroup::
+::group::[32m✅ Linted [REPOSITORY] files with [trivy] successfully - (3.49s)[0m (expand for details)
+- Using [trivy v0.38.1] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/repository_trivy
+- MegaLinter key: [REPOSITORY_TRIVY]
+- Rules config: identified by [trivy]
+::endgroup::
+::group::[32m✅ Linted [BASH] files with [shellcheck] successfully - (0.06s)[0m (expand for details)
+- Using [shellcheck v0.9.0] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/bash_shellcheck
+- MegaLinter key: [BASH_SHELLCHECK]
+- Rules config: identified by [shellcheck]
+- Number of files analyzed: [1]
+::endgroup::
+::group::[32m✅ Linted [REPOSITORY] files with [secretlint] successfully - (0.64s)[0m (expand for details)
+- Using [secretlint v6.2.3] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/repository_secretlint
+- MegaLinter key: [REPOSITORY_SECRETLINT]
+- Rules config: [.secretlintrc.json]
+- Ignore file: [.secretlintignore]
+::endgroup::
+::group::[32m✅ Linted [REPOSITORY] files with [git_diff] successfully - (0.0s)[0m (expand for details)
+- Using [git_diff v2.38.4] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/repository_git_diff
+- MegaLinter key: [REPOSITORY_GIT_DIFF]
+- Rules config: identified by [git_diff]
+::endgroup::
+::group::[33m✅ Linted [REPOSITORY] files with [checkov]: Found 1 non blocking error(s) - (7.63s)[0m (expand for details)
+- Using [checkov v2.3.70] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/repository_checkov
+- MegaLinter key: [REPOSITORY_CHECKOV]
+- Rules config: [.checkov.yml]
+--Error detail:
+github_actions scan results:
+
+Passed checks: 43, Failed checks: 1, Skipped checks: 0
+
+Check: CKV2_GHA_1: "Ensure top-level permissions are not set to write-all"
+	FAILED for resource: on(MegaLinter)
+	File: /.github/workflows/megalinter.yml:26-27
+
+		26 |     permissions:
+		27 |       pull-requests: write
+
+
+
+::endgroup::
+
++----SUMMARY----+------------+---------------+-------+-------+--------+--------------+
+| Descriptor    | Linter     | Mode          | Files | Fixed | Errors | Elapsed time |
++---------------+------------+---------------+-------+-------+--------+--------------+
+| ✅ BASH       | shellcheck | list_of_files |     1 |       |      0 |        0.06s |
+| ✅ BASH       | shfmt      | list_of_files |     1 |     1 |      0 |        0.02s |
+| ◬ REPOSITORY  | checkov    | project       |   n/a |       |      1 |        7.63s |
+| ✅ REPOSITORY | gitleaks   | project       |   n/a |       |      0 |        0.07s |
+| ✅ REPOSITORY | git_diff   | project       |   n/a |       |      0 |         0.0s |
+| ✅ REPOSITORY | secretlint | project       |   n/a |       |      0 |        0.64s |
+| ✅ REPOSITORY | trivy      | project       |   n/a |       |      0 |        3.49s |
++---------------+------------+---------------+-------+-------+--------+--------------+
+
+[GitHub Comment Reporter] Posted summary as comment on flexion/bash_shell_script_starter #PR4
+[Updated Sources Reporter] copied 1 fixed source files in folder /github/workspace/megalinter-reports/updated_sources.
+Download it from artifacts then copy-paste it in your local repo to apply linters updates
