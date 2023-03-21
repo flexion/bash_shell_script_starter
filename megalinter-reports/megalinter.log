@@ -11,7 +11,7 @@ The MegaLinter documentation can be found at:
 ::group::MegaLinter initialization (expand for details)
 GITHUB_REPOSITORY: flexion/bash_shell_script_starter
 GITHUB_REF: refs/pull/4/merge
-GITHUB_RUN_ID: 4483328643
+GITHUB_RUN_ID: 4483343094
 
 
 [Activation] EDITORCONFIG_EDITORCONFIG_CHECKER has been set inactive, as none of these files has been found: ['.editorconfig']
@@ -63,6 +63,7 @@ megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter
 megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/IDE-config/.vscode/extensions.json
 megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/IDE-config/.vscode/extensions.json
 megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/IDE-config/.vscode/extensions.json
+megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/updated_sources/megalinter-reports/IDE-config/.vscode/extensions.json
 megalinter-reports/updated_sources/megalinter-reports/updated_sources/shell_script_template.bash
 megalinter-reports/updated_sources/shell_script_template.bash
 shell_script_template.bash
@@ -70,17 +71,17 @@ shell_script_template.bash
 - File names (regex): Dockerfile, Jenkinsfile, Makefile, Snakefile
 - Excluding regex: (.venv/|/test/|\.test\.|_test\.|/docs/|/index.html|.github/.*\.html)
 - Excluding .gitignored files [0]: 
-Kept [15] files on [35] found files
+Kept [16] files on [36] found files
 
 +----MATCHING LINTERS--------------+----------------------+----------------+------------+
 | Descriptor | Linter              | Criteria             | Matching files | Format/Fix |
 +------------+---------------------+----------------------+----------------+------------+
 | BASH       | shellcheck          | .sh|.bash|.dash|.ksh | 3              | no         |
 | BASH       | shfmt               | .sh|.bash|.dash|.ksh | 3              | yes        |
-| JSON       | jsonlint            | .json                | 10             | no         |
-| JSON       | eslint-plugin-jsonc | .json|.json5|.jsonc  | 10             | yes        |
-| JSON       | v8r                 | .json                | 10             | no         |
-| JSON       | prettier            | .json                | 10             | yes        |
+| JSON       | jsonlint            | .json                | 11             | no         |
+| JSON       | eslint-plugin-jsonc | .json|.json5|.jsonc  | 11             | yes        |
+| JSON       | v8r                 | .json                | 11             | no         |
+| JSON       | prettier            | .json                | 11             | yes        |
 | REPOSITORY | checkov             |                      | project        | no         |
 | REPOSITORY | dustilock           |                      | project        | no         |
 | REPOSITORY | git_diff            |                      | project        | no         |
@@ -109,26 +110,26 @@ Kept [15] files on [35] found files
 - Using [eslint-plugin-jsonc v2.6.0] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/json_eslint_plugin_jsonc
 - MegaLinter key: [JSON_ESLINT_PLUGIN_JSONC]
 - Rules config: [.eslintrc-json.json]
-- Number of files analyzed: [10]
+- Number of files analyzed: [11]
 ::endgroup::
-::group::[32m✅ Linted [JSON] files with [prettier] successfully - (0.95s)[0m (expand for details)
+::group::[32m✅ Linted [JSON] files with [prettier] successfully - (0.51s)[0m (expand for details)
 - Using [prettier v2.8.4] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/json_prettier
 - MegaLinter key: [JSON_PRETTIER]
 - Rules config: identified by [prettier]
-- Number of files analyzed: [10]
+- Number of files analyzed: [11]
 ::endgroup::
-::group::[32m✅ Linted [REPOSITORY] files with [gitleaks] successfully - (0.08s)[0m (expand for details)
+::group::[32m✅ Linted [REPOSITORY] files with [gitleaks] successfully - (0.06s)[0m (expand for details)
 - Using [gitleaks v8.16.0] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/repository_gitleaks
 - MegaLinter key: [REPOSITORY_GITLEAKS]
 - Rules config: [.gitleaks.toml]
 ::endgroup::
-::group::[32m✅ Linted [JSON] files with [v8r] successfully - (2.87s)[0m (expand for details)
+::group::[32m✅ Linted [JSON] files with [v8r] successfully - (2.42s)[0m (expand for details)
 - Using [v8r v0.14.0] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/json_v8r
 - MegaLinter key: [JSON_V8R]
 - Rules config: identified by [v8r]
-- Number of files analyzed: [10]
+- Number of files analyzed: [11]
 ::endgroup::
-::group::[32m✅ Linted [YAML] files with [v8r] successfully - (1.35s)[0m (expand for details)
+::group::[32m✅ Linted [YAML] files with [v8r] successfully - (1.33s)[0m (expand for details)
 - Using [v8r v0.14.0] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/yaml_v8r
 - MegaLinter key: [YAML_V8R]
 - Rules config: identified by [v8r]
@@ -139,19 +140,19 @@ Kept [15] files on [35] found files
 - MegaLinter key: [REPOSITORY_TRIVY]
 - Rules config: identified by [trivy]
 ::endgroup::
-::group::[32m✅ Linted [BASH] files with [shellcheck] successfully - (0.52s)[0m (expand for details)
+::group::[32m✅ Linted [BASH] files with [shellcheck] successfully - (0.15s)[0m (expand for details)
 - Using [shellcheck v0.9.0] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/bash_shellcheck
 - MegaLinter key: [BASH_SHELLCHECK]
 - Rules config: identified by [shellcheck]
 - Number of files analyzed: [3]
 ::endgroup::
-::group::[32m✅ Linted [JSON] files with [jsonlint] successfully - (0.14s)[0m (expand for details)
+::group::[32m✅ Linted [JSON] files with [jsonlint] successfully - (0.13s)[0m (expand for details)
 - Using [jsonlint v14.0.1] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/json_jsonlint
 - MegaLinter key: [JSON_JSONLINT]
 - Rules config: identified by [jsonlint]
-- Number of files analyzed: [10]
+- Number of files analyzed: [11]
 ::endgroup::
-::group::[32m✅ Linted [REPOSITORY] files with [secretlint] successfully - (0.65s)[0m (expand for details)
+::group::[32m✅ Linted [REPOSITORY] files with [secretlint] successfully - (1.0s)[0m (expand for details)
 - Using [secretlint v6.2.3] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/repository_secretlint
 - MegaLinter key: [REPOSITORY_SECRETLINT]
 - Rules config: [.secretlintrc.json]
@@ -168,7 +169,7 @@ Kept [15] files on [35] found files
 - MegaLinter key: [REPOSITORY_GIT_DIFF]
 - Rules config: identified by [git_diff]
 ::endgroup::
-::group::[33m✅ Linted [REPOSITORY] files with [checkov]: Found 1 non blocking error(s) - (8.19s)[0m (expand for details)
+::group::[33m✅ Linted [REPOSITORY] files with [checkov]: Found 1 non blocking error(s) - (8.46s)[0m (expand for details)
 - Using [checkov v2.3.70] https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/repository_checkov
 - MegaLinter key: [REPOSITORY_CHECKOV]
 - Rules config: [.checkov.yml]
@@ -191,22 +192,22 @@ Check: CKV2_GHA_1: "Ensure top-level permissions are not set to write-all"
 +----SUMMARY----+---------------------+---------------+-------+-------+--------+--------------+
 | Descriptor    | Linter              | Mode          | Files | Fixed | Errors | Elapsed time |
 +---------------+---------------------+---------------+-------+-------+--------+--------------+
-| ✅ BASH       | shellcheck          | list_of_files |     3 |       |      0 |        0.52s |
+| ✅ BASH       | shellcheck          | list_of_files |     3 |       |      0 |        0.15s |
 | ✅ BASH       | shfmt               | list_of_files |     3 |     0 |      0 |        0.02s |
-| ✅ JSON       | eslint-plugin-jsonc | list_of_files |    10 |     0 |      0 |        0.74s |
-| ✅ JSON       | jsonlint            | list_of_files |    10 |       |      0 |        0.14s |
-| ✅ JSON       | prettier            | list_of_files |    10 |    10 |      0 |        0.95s |
-| ✅ JSON       | v8r                 | list_of_files |    10 |       |      0 |        2.87s |
-| ◬ REPOSITORY  | checkov             | project       |   n/a |       |      1 |        8.19s |
-| ✅ REPOSITORY | gitleaks            | project       |   n/a |       |      0 |        0.08s |
+| ✅ JSON       | eslint-plugin-jsonc | list_of_files |    11 |     0 |      0 |        0.74s |
+| ✅ JSON       | jsonlint            | list_of_files |    11 |       |      0 |        0.13s |
+| ✅ JSON       | prettier            | list_of_files |    11 |    11 |      0 |        0.51s |
+| ✅ JSON       | v8r                 | list_of_files |    11 |       |      0 |        2.42s |
+| ◬ REPOSITORY  | checkov             | project       |   n/a |       |      1 |        8.46s |
+| ✅ REPOSITORY | gitleaks            | project       |   n/a |       |      0 |        0.06s |
 | ✅ REPOSITORY | git_diff            | project       |   n/a |       |      0 |        0.01s |
-| ✅ REPOSITORY | secretlint          | project       |   n/a |       |      0 |        0.65s |
+| ✅ REPOSITORY | secretlint          | project       |   n/a |       |      0 |         1.0s |
 | ✅ REPOSITORY | trivy               | project       |   n/a |       |      0 |        4.12s |
 | ✅ YAML       | prettier            | list_of_files |     2 |     1 |      0 |        0.41s |
-| ✅ YAML       | v8r                 | list_of_files |     2 |       |      0 |        1.35s |
+| ✅ YAML       | v8r                 | list_of_files |     2 |       |      0 |        1.33s |
 | ✅ YAML       | yamllint            | list_of_files |     2 |       |      0 |        0.19s |
 +---------------+---------------------+---------------+-------+-------+--------+--------------+
 
 [GitHub Comment Reporter] Posted summary as comment on flexion/bash_shell_script_starter #PR4
-[Updated Sources Reporter] copied 9 fixed source files in folder /github/workspace/megalinter-reports/updated_sources.
+[Updated Sources Reporter] copied 10 fixed source files in folder /github/workspace/megalinter-reports/updated_sources.
 Download it from artifacts then copy-paste it in your local repo to apply linters updates
