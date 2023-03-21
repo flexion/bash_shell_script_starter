@@ -21,7 +21,7 @@ set -euo pipefail
 ## @brief path to where the script lives
 declare SCRIPT_PATH
 # shellcheck disable=SC2034
-SCRIPT_PATH="${SCRIPT_PATH:-$(cd "$( dirname "${BASH_SOURCE[0]}")"  && pwd -P)}"
+SCRIPT_PATH="${SCRIPT_PATH:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)}"
 
 ## @var LIBRARY_PATH
 ## @brief location where libraries to be included reside
@@ -125,7 +125,7 @@ display_usage() {
 ###
 
 if [ -n "${LIBRARY_PATH}" ] \
-  && [ -d "${LIBRARY_PATH}" ]; then
+                            && [ -d "${LIBRARY_PATH}" ]; then
   for library in "${LIBRARY_PATH}"*.bash; do
     if [ -e "${library}" ]; then
       # shellcheck disable=SC1090
@@ -157,9 +157,9 @@ main() {
   for arg in "$@"; do
     shift
     case "$arg" in
-      '--word') set -- "$@" "-w" ;;   ##- see -w
-      '--help') set -- "$@" "-h" ;;   ##- see -h
-      *)        set -- "$@" "$arg" ;;
+      '--word') set -- "$@" "-w" ;; ##- see -w
+      '--help') set -- "$@" "-h" ;; ##- see -h
+      *) set -- "$@" "$arg" ;;
     esac
   done
 
@@ -170,16 +170,16 @@ main() {
   OPTIND=1
   while getopts "w:h" opt; do
     case "$opt" in
-      'w')  word="$OPTARG" ;;         ##- set the word to be processed
+      'w') word="$OPTARG" ;; ##- set the word to be processed
       'h')
-            display_usage
-                            exit 0
-                                   ;; ##- view the help documentation
+        display_usage
+        exit 0
+        ;; ##- view the help documentation
       *)
-         printf "Invalid option '%s'" "$opt" 1>&2
-                                                    display_usage 1>&2
-                                                                         exit 1
-                                                                                ;;
+        printf "Invalid option '%s'" "$opt" 1>&2
+        display_usage 1>&2
+        exit 1
+        ;;
     esac
   done
 
