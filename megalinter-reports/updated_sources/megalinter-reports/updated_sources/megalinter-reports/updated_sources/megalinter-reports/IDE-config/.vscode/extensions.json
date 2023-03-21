@@ -1,9 +1,9 @@
 {
     "recommendations": [
-        "AquaSecurityOfficial.trivy-vulnerability-scanner",
         "timonwong.shellcheck",
         "esbenp.prettier-vscode",
+        "foxundermoon.shell-format",
         "Bridgecrew.checkov",
-        "foxundermoon.shell-format"
+        "AquaSecurityOfficial.trivy-vulnerability-scanner"
     ]
 }
