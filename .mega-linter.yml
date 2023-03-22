@@ -55,5 +55,3 @@ BASH_SHFMT_ARGUMENTS: -i 2 -bn -ci -sr -kp
 # skip the libraries, tests, and example files
 BASH_EXEC_FILTER_REGEX_EXCLUDE: (libs|\.(test|sample|example)\.)
 
-# Chekov's GitHub Action check for top-level permissions is incorrect
-REPOSITORY_CHECKOV_ARGUMENTS: -skip-check CKV2_GHA_1
