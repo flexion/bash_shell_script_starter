@@ -1,0 +1,7 @@
+*~
+venv/
+megalinter-reports/
+reports/
+.scannerwork
+.travis.yml
+
