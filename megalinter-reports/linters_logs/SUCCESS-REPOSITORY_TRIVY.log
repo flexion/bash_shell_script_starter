@@ -1,0 +1,5 @@
+Results of trivy linter (version 0.38.1)
+See documentation on https://megalinter.io/7411316caa2897b3839af1834e5fd8ebd5b7b81e/descriptors/repository_trivy/
+-----------------------------------------------
+
+✅ [SUCCESS] for workspace /github/workspace
